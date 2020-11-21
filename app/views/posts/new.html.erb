@@ -1,4 +1,6 @@
 <% provide(:title, 'New Post') %>
+
+<h1>Post Submission</h1>
 <%= form_for @post, url: { action: "create" } do |f| %>
 <div class="form-group">
   <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
