@@ -1,0 +1,11 @@
+<% @posts.each do |post| %>
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title"><%= post.title %></h5>
+    <a href="#" class="btn btn-primary">Read</a>
+  </div>
+  <div class="card-footer text-muted">
+    <%= post.created_at.strftime("%F %T") %>
+  </div>
+</div>
+<% end %>
