@@ -1,9 +1,6 @@
 module ApplicationHelper
   def full_title(title = '')
-    if title.empty?
-      title
-    else
-      'Post Website'
-    end
+    'Post Website' if title.empty?
+    title
   end
 end
