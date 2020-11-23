@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  include SessionHelper
+  before_action :require_login, except: %i[index show]
+
   def new
     @post =  Post.new
   end
