@@ -12,6 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootstrap', '~> 4.5', '>= 4.5.3'
 gem 'jquery-rails'
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
