@@ -4,4 +4,5 @@ class User < ApplicationRecord
   validates_presence_of :name
   has_secure_password
   validates_presence_of :password
+  has_many :posts
 end
