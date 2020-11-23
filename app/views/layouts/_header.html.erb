@@ -4,10 +4,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+    <% if logged_in? %>
+    <div class="navbar-nav mr-auto">
       <%= link_to  "Submit", new_post_path, class: "navbar-item nav-link"%>
+    </div>
+    <div class="navbar-nav">
+      <%= link_to  "Logout", logout_path, class: "navbar-item nav-link", method: :delete%>
+    </div>
+    <% else %>
+    <div class="navbar-nav mr-auto"></div>
+    <div class="navbar-nav">
       <%= link_to  "Register", register_path, class: "navbar-item nav-link"%>
       <%= link_to  "Login", login_path, class: "navbar-item nav-link"%>
     </div>
+    <% end %>
   </div>
 </nav>
