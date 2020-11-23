@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   before_save { self.name = name.downcase }
-  validates_uniqueness_of :name
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: true, length: { maximum: 32 }
+  validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
-  validates_presence_of :password
   has_many :posts
 end
