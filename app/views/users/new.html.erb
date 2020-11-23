@@ -9,7 +9,7 @@
 <% end %>
 
 <h1>Register</h1>
-<%= form_for @user, url: { action: "create" } do |f| %>
+<%= form_with model: @user, url: register_path, local: true do |f| %>
 <div class="form-group">
   <%= f.text_field :name, class: "form-control", placeholder: :name %>
 </div>
