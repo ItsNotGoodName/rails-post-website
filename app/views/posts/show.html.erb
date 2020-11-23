@@ -2,8 +2,9 @@
   <%= @post.title %>
 </h3>
 <p>
-  | Votes: <%= @post.vote %> | Posted by Anonymous | <%= @post.created_at.strftime("%F") %> |
+  <span class="badge badge-primary">Votes <%= @post.vote %></span>
+  <span class="badge badge-secondary"><%= @post.created_at.strftime("%F") %></span>
 </p>
-<p>
+<p class="border p-3">
   <%= @post.body %>
 <p>
