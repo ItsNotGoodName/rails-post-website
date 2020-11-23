@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#index'
   resources :posts, only: %i[index new create show]
+  resources :users, only: %i[show]
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
   get '/login', to: 'session#new'

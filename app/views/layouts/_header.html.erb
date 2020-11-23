@@ -9,6 +9,7 @@
       <%= link_to  "Submit", new_post_path, class: "navbar-item nav-link"%>
     </div>
     <div class="navbar-nav">
+      <%= link_to  "Profile", user_path(session[:user_id]), class: "navbar-item nav-link" %>
       <%= link_to  "Logout", logout_path, class: "navbar-item nav-link", method: :delete%>
     </div>
     <% else %>

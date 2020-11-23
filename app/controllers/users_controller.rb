@@ -3,6 +3,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find_by id: params[:id]
+    render file: 'public/404.html' if @user.nil?
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
