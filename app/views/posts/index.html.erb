@@ -5,8 +5,10 @@
       <div class="col">
         <%= link_to  post.title, post, class: "font-weight-bold" %>
       </div>
-      <div class="float-right">
-        <%= post.created_at.strftime("%F") %>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= render 'badges', post: post %>
       </div>
     </div>
   </div>
