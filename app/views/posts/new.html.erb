@@ -1,5 +1,13 @@
 <% provide(:title, 'New Post') %>
 
+<% if @post.errors.any? %>
+<% @post.errors.full_messages.each do |msg| %>
+<div class="alert alert-danger" role="alert">
+  <%= msg %>
+</div>
+<% end %>
+<% end %>
+
 <h1>Post Submission</h1>
 <%= form_for @post, url: { action: "create" } do |f| %>
 <div class="form-group">
