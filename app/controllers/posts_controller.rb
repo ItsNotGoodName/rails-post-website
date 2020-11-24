@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
     has_next = true
 
-    if posts_plus_one.length == POST_PER_PAGE
+    if posts_plus_one.length <= POST_PER_PAGE
       @posts = posts_plus_one
       has_next = false
     else
