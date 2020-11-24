@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_074126) do
+ActiveRecord::Schema.define(version: 2020_11_24_031752) do
+
+  create_table "post_votes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.boolean "upvote"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "post_id"], name: "index_post_votes_on_user_id_and_post_id", unique: true
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
