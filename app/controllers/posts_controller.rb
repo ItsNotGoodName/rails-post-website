@@ -24,9 +24,11 @@ class PostsController < ApplicationController
 
     @page = {
       prev?: current_page > 0,
-      current_page: current_page,
-      next?: has_next
+      current: current_page,
+      next?: has_next,
+      last: ((Post.count - 1) / POST_PER_PAGE).to_i
     }
+    # Math.floor((count - 1) / this.pageOffset) + 1
   end
 
   def create
