@@ -2,10 +2,10 @@
   <ul class="pagination justify-content-center">
     <% if @page[:prev?] %>
     <li class="page-item">
-      <%= link_to  "First", posts_url(page: 0), class:"page-link" %>
+      <%= link_to  "Previous", posts_url(page: @page[:current]-1), class:"page-link" %>
     </li>
     <li class="page-item">
-      <%= link_to  "Previous", posts_url(page: @page[:current]-1), class:"page-link" %>
+      <%= link_to  0, posts_url(page: 0), class:"page-link" %>
     </li>
     <% end %>
     <li class="page-item active">
@@ -16,10 +16,10 @@
     </li>
     <% if @page[:next?] %>
     <li class="page-item">
-      <%= link_to  "Next", posts_url(page: @page[:current]+1), class:"page-link" %>
+      <%= link_to  @page[:last], posts_url(page: @page[:last]), class:"page-link" %>
     </li>
     <li class="page-item">
-      <%= link_to  "Last", posts_url(page: @page[:last]), class:"page-link" %>
+      <%= link_to  "Next", posts_url(page: @page[:current]+1), class:"page-link" %>
     </li>
     <% end %>
   </ul>
