@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'posts#index'
-  resources :posts, only: %i[index new create show]
+  resources :posts, only: %i[index new create show] do
+    resources :post_votes, only: %i[create]
+  end
   resources :users, only: %i[show]
-  resources :post_votes, only: %i[create delete]
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
   get '/login', to: 'session#new'
