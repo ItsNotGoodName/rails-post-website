@@ -1,7 +1,7 @@
 <%
   upvote_class = "mb-1 "
   downvote_class = ""
-if not post.upvote.nil?
+if logged_in?
   if post.upvote == 1 
     upvote_class += "bg-success"
   else
