@@ -2,10 +2,10 @@
   upvote_class = "mb-1 "
   downvote_class = ""
 if not post.upvote.nil?
-  if post.upvote == 1 
-    upvote_class += "bg-success"
-  else
+  if !post.upvote
     downvote_class += "bg-danger"
+  else
+    upvote_class += "bg-success"
   end
 end
 %>
