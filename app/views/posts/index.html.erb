@@ -1,4 +1,7 @@
-<% @posts.each do |post| %>
+<% 
+  post_vote_partial = logged_in? ? 'post_vote_logged_in': 'post_vote'
+  @posts.each do |post| 
+%>
 <div id=<%= post.id %> class="card mb-2">
   <div class="card-body d-flex">
     <div class="mr-auto">
@@ -14,7 +17,7 @@
       </div>
     </div>
     <div>
-      <%= render 'post_vote', post: post %>
+      <%= render post_vote_partial, post: post %>
     </div>
   </div>
 </div>
