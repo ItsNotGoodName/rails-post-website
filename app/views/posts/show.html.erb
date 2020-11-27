@@ -1,9 +1,21 @@
-<h3>
-  <%= @post.title %>
-</h3>
-<p>
-  <%= render 'badges', post: @post %>
-</p>
+<div class="d-flex mb-2">
+<div class="mr-auto">
+  <div class="row">
+    <div class="col">
+      <h3>
+        <%= @post.title %>
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= render 'badges', post: @post %>
+    </div>
+  </div>
+  <div>
+  </div>
+</div>
+</div>
 <p class="border p-3">
   <%= @post.body %>
 <p>
