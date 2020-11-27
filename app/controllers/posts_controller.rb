@@ -16,20 +16,20 @@ class PostsController < ApplicationController
         .order(created_at: :desc)
         .offset(current_page * POST_PER_PAGE)
         .limit(POST_PER_PAGE + 1)
-        .select("posts .*, post_votes.upvote as upvote")
-        .joins("LEFT JOIN post_votes ON post_votes .user_id = #{current_user.id} AND post_votes.post_id = posts.id")
+        .select("posts.*, post_votes.upvote as upvote")
+        .joins("LEFT JOIN post_votes ON post_votes.user_id = #{current_user.id} AND post_votes.post_id = posts.id")
     else
       Post
         .order(created_at: :desc)
         .offset(current_page * POST_PER_PAGE)
     end
-    has_next = true
 
     if posts_plus_one.length <= POST_PER_PAGE
       @posts = posts_plus_one
       has_next = false
     else
       @posts = posts_plus_one.slice(0, POST_PER_PAGE)
+      has_next = true
     end
 
     @page = {
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path
     else
-      render "new"
+      render :new
     end
   end
 
