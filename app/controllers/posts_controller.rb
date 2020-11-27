@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     end
 
     @page = {
-      prev?: current_page > 0,
+      prev?: current_page.positive?,
       current: current_page,
       next?: has_next,
       last: ((Post.count - 1) / POST_PER_PAGE).to_i
