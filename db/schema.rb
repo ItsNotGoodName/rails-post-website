@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_031752) do
+ActiveRecord::Schema.define(version: 2020_11_27_223531) do
 
   create_table "post_votes", force: :cascade do |t|
     t.integer "post_id"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2020_11_24_031752) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.index ["name"], name: "index_users_on_name", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "value", limit: 1
+    t.integer "user_id"
+    t.integer "voteable_id"
+    t.string "voteable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "voteable_id", "voteable_type"], name: "index_votes_on_user_id_and_voteable_id_and_voteable_type", unique: true
   end
 
 end
