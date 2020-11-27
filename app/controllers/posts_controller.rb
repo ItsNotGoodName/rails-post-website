@@ -15,8 +15,6 @@ class PostsController < ApplicationController
       .order(created_at: :desc)
       .offset(current_page * POST_PER_PAGE)
       .limit(POST_PER_PAGE + 1)
-      .select("posts.*, post_votes.upvote as upvote")
-      .joins("LEFT JOIN post_votes ON post_votes.user_id = #{current_user&.id || -1} AND post_votes.post_id = posts.id")
 
     if posts_plus_one.length <= POST_PER_PAGE
       @posts = posts_plus_one

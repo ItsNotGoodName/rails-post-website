@@ -1,12 +1,13 @@
-class PostVotesController < ApplicationController
+class VoteController < ApplicationController
   include SessionHelper
-  include PostVotesHelper
+  include VotesHelper
   before_action :require_login
 
   def vote
+    debugger
     post = Post.find(params[:post_id])
-    upvote = params[:upvote].to_i == 1
-    vote_on_post current_user, post, upvote
+    value = params[:value].to_i
+    vote_on_target current_user, post, value
 
     if params[:goto].nil?
       redirect_back fallback_location: root_path

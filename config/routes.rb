@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "posts#index"
   resources :posts, only: %i[index new create show] do
-    post "/vote", to: "post_votes#vote"
+    post "/vote", to: "votes#vote"
   end
   resources :users, only: %i[show]
   get "/register", to: "users#new"

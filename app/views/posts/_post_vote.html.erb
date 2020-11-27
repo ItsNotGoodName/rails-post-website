@@ -1,13 +1,6 @@
 <% 
 upvote_class = "mb-2 "
 downvote_class = ""
-if ! post.upvote.nil?
-  if post.upvote == 1
-    upvote_class += "bg-success"
-  else 
-    downvote_class += "bg-danger"
-  end
-end
 %>
 
 <%= button_to post_vote_path(post_id: post.id, upvote: 1, goto: request.original_fullpath), class: upvote_class do %>
