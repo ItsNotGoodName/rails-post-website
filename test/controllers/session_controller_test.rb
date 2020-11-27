@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class SessionControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
@@ -15,5 +15,4 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
     get session_destroy_url
     assert_response :success
   end
-
 end

@@ -1,6 +1,7 @@
 class SessionController < ApplicationController
   include SessionHelper
-  def new; end
+  def new
+  end
 
   def create
     user = User.find_by(name: params[:session][:name].downcase)
@@ -8,8 +9,8 @@ class SessionController < ApplicationController
       login user
       redirect_to root_path
     else
-      flash.now[:danger] = 'Invalid credentials'
-      render 'new'
+      flash.now[:danger] = "Invalid credentials"
+      render "new"
     end
   end
 

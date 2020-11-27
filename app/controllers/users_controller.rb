@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by id: params[:id]
-    render file: 'public/404.html' if @user.nil?
+    render file: "public/404.html" if @user.nil?
   end
 
   def create
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       login @user
       redirect_to root_path
     else
-      render 'new'
+      render "new"
     end
   end
 

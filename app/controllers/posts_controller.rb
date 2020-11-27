@@ -11,17 +11,17 @@ class PostsController < ApplicationController
   def index
     current_page = current_page_params
 
-    if logged_in?
-      posts_plus_one = Post
-                       .order(created_at: :desc)
-                       .offset(current_page * POST_PER_PAGE)
-                       .limit(POST_PER_PAGE + 1)
-                       .select('posts .*, post_votes.upvote as upvote')
-                       .joins("LEFT JOIN post_votes ON post_votes .user_id = #{current_user.id} AND post_votes.post_id = posts.id")
+    posts_plus_one = if logged_in?
+      Post
+        .order(created_at: :desc)
+        .offset(current_page * POST_PER_PAGE)
+        .limit(POST_PER_PAGE + 1)
+        .select("posts .*, post_votes.upvote as upvote")
+        .joins("LEFT JOIN post_votes ON post_votes .user_id = #{current_user.id} AND post_votes.post_id = posts.id")
     else
-      posts_plus_one = Post
-                       .order(created_at: :desc)
-                       .offset(current_page * POST_PER_PAGE)
+      Post
+        .order(created_at: :desc)
+        .offset(current_page * POST_PER_PAGE)
     end
     has_next = true
 
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path
     else
-      render 'new'
+      render "new"
     end
   end
 
