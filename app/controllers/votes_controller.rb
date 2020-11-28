@@ -1,10 +1,9 @@
-class VoteController < ApplicationController
+class VotesController < ApplicationController
   include SessionHelper
   include VotesHelper
   before_action :require_login
 
   def vote
-    debugger
     post = Post.find(params[:post_id])
     value = params[:value].to_i
     vote_on_target current_user, post, value
