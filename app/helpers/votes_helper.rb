@@ -1,5 +1,5 @@
 module VotesHelper
-  VALID_VOTES = [-1, 1]
+  VALID_VOTES = [-1, 1].freeze
 
   def vote_on_target(user, target, new_value)
     return unless VotesHelper::VALID_VOTES.include? new_value
