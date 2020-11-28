@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.create(comments_params)
     @comment.save
+    flash[:danger] = "Comment cannot be empty"
     goto_or_goback @comment.id
   end
 

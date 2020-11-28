@@ -1,4 +1,4 @@
-<%= form_with url: polymorphic_url([commentable, @comment]), class: "mb-3", scope: :comment,local: true do |f| %>
+<%= form_with url: polymorphic_url([commentable, Comment]), class: "mb-3", scope: :comment,local: true do |f| %>
 <div class="form-group">
   <%= f.text_area :body, class: "form-control", placeholder: :body %>
 </div>

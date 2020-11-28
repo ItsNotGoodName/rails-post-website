@@ -57,7 +57,6 @@ class PostsController < ApplicationController
       .preload(:user)
       .select("comments.*, votes.value as vote_value")
       .joins("LEFT JOIN votes ON votes.user_id = #{logged_in? ? @current_user.id : -1} AND votes.voteable_id = comments.id AND votes.voteable_type = 'Comment' ")
-    @comment = Comment.new
   end
 
   private
