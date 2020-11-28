@@ -16,7 +16,7 @@
   </div>
 </div>
 <div>
-  <%= render 'post_vote', post: @post %>
+  <%= render 'votes/vote_submit', voteable: @post %>
 </div>
 </div>
 <p class="border p-3">
@@ -27,7 +27,7 @@
 </div>
 
 <div>
-<% @post.comments.preload(:user).each do |comment| %>
+<% @comments.each do |comment| %>
   <div class="container border-top pt-3 pb-3 d-flex" id=<%= comment.id %>>
     <div class="mr-auto">
       <h5 class="row">

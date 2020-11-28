@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     current_page = current_page_params
 
     posts_plus_one = Post
-      .order(created_at: :desc)
+      .order(vote: :desc, created_at: :desc)
       .offset(current_page * POST_PER_PAGE)
       .limit(POST_PER_PAGE + 1)
       .preload(:user)
@@ -47,7 +47,10 @@ class PostsController < ApplicationController
   def show
     @post = Post
       .find(params[:id])
-
+    @comments = @post
+      .comments
+      .order(vote: :desc, created_at: :desc)
+      .preload(:user)
     @comment = Comment.new
   end
 
