@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include ApplicationHelper
   include SessionHelper
-  before_action :current_user, only: %i[index show create]
+  before_action :current_user, only: %i[index show]
   before_action :require_login, except: %i[index show]
 
   POST_PER_PAGE = 10
@@ -46,10 +46,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post
-      .find(params[:id])
-    @post_vote = @post.votes.find_by(user_id: @current_user&.id)
-
+    @post = Post.find(params[:id])
+    @post_vote = @post.votes.find_by(user: @current_user)
     @comments = @post
       .comments
       .order(vote: :desc, created_at: :desc)
