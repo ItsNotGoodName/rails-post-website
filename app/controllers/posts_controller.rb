@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include ApplicationHelper
   include SessionHelper
   before_action :require_login, except: %i[index show]
 
@@ -44,6 +45,8 @@ class PostsController < ApplicationController
   def show
     @post = Post
       .find(params[:id])
+
+    @comment = Comment.new
   end
 
   private

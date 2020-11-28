@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "posts#index"
   resources :posts, only: %i[index new create show] do
+    resources :comments, only: %i[create]
     post "/vote", to: "votes#vote"
   end
   resources :comments do

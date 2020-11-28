@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  include ApplicationHelper
   include SessionHelper
   include VotesHelper
   before_action :require_login
@@ -8,17 +9,13 @@ class VotesController < ApplicationController
     value = params[:value].to_i
     vote_on_votable current_user, @voteable, value
 
-    if params[:goto].nil?
-      redirect_back fallback_location: root_path
-    else
-      redirect_to "#{params[:goto]}##{@voteable.id}"
-    end
+    goto_or_goback(@voteable.id)
   end
 
   private
 
   def find_voteable
-    model = [Post].detect { |c| params["#{c.name.underscore}_id"] }
+    model = [Post, Comment].detect { |c| params["#{c.name.underscore}_id"] }
     @voteable = model.find(params["#{model.name.underscore}_id"])
   end
 end
