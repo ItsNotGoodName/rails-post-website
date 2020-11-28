@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   include ApplicationHelper
   include SessionHelper
+  before_action :current_user, only: %i[index show create]
   before_action :require_login, except: %i[index show]
 
   POST_PER_PAGE = 10
@@ -25,8 +26,6 @@ class PostsController < ApplicationController
       @posts = posts_plus_one.slice(0, POST_PER_PAGE)
       has_next = true
     end
-
-    @user = current_user if logged_in?
 
     @page = {
       prev?: current_page.positive?,
@@ -62,6 +61,6 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :title,
       :body
-    ).merge(user_id: current_user.id)
+    ).merge(user_id: @current_user.id)
   end
 end

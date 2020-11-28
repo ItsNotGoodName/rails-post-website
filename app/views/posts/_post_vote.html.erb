@@ -4,8 +4,8 @@ downvote_class = ""
 %>
 
 <% 
-if defined?(@user)
-   post_vote = post.votes.find_by(user: @user.id)
+if @current_user
+   post_vote = post.votes.find_by(user: @current_user.id)
    if !post_vote.nil?
      if post_vote.value == 1
       upvote_class += "bg-success"
