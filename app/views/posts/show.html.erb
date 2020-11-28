@@ -28,13 +28,16 @@
 
 <div>
 <% @post.comments.preload(:user).each do |comment| %>
-  <div class="container border-top pt-3 pb-3" id=<%= comment.id %>>
-    <h5 class="row">
-      <%= link_to  comment.user.name, user_path(comment.user) %>
-    </h5>
-    <p class="row px-3">
-      <%= comment.body %>
-    </p>
+  <div class="container border-top pt-3 pb-3 d-flex" id=<%= comment.id %>>
+    <div class="mr-auto">
+      <h5 class="row">
+        <%= link_to  comment.user.name, user_path(comment.user) %>
+      </h5>
+      <p class="row px-3"><%= comment.body %></p>
+    </div>
+    <div> 
+      <%= render 'votes/vote_submit', voteable: comment %>
+    </div>
   </div>
 <% end %>
 </div>
