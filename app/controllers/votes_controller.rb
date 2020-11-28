@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   include SessionHelper
   include VotesHelper
   before_action :require_login
-  before_action :find_votable
+  before_action :find_voteable
 
   def vote
     value = params[:value].to_i
@@ -17,7 +17,7 @@ class VotesController < ApplicationController
 
   private
 
-  def find_votable
+  def find_voteable
     model = [Post].detect { |c| params["#{c.name.underscore}_id"] }
     @voteable = model.find(params["#{model.name.underscore}_id"])
   end
