@@ -16,6 +16,7 @@ class PostsController < ApplicationController
       .order(created_at: :desc)
       .offset(current_page * POST_PER_PAGE)
       .limit(POST_PER_PAGE + 1)
+      .preload(:user)
 
     if posts_plus_one.length <= POST_PER_PAGE
       @posts = posts_plus_one
