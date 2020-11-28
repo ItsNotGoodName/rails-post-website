@@ -1,21 +1,19 @@
 class CommentsController < ApplicationController
+  include ApplicationHelper
   include SessionHelper
   before_action :require_login
   before_action :find_commentable
 
   def create
-    @comment = Comment.new(comments_params)
-    if @comment.save
-      goto_or_goback @commentable.id
-    else
-      render :root_path
-    end
+    @comment = @commentable.comments.create(comments_params)
+    @comment.save
+    goto_or_goback @comment.id
   end
 
   private
 
   def comments_params
-    params.require(:comments).permit(
+    params.require(:comment).permit(
       :body
     ).merge(user_id: current_user.id)
   end

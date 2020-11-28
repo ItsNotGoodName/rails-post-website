@@ -1,0 +1,7 @@
+<%= form_with url: polymorphic_url([commentable, @comment]), class: "mb-3", scope: :comment,local: true do |f| %>
+<div class="form-group">
+  <%= f.text_area :body, class: "form-control", placeholder: :body %>
+</div>
+<%= hidden_field_tag :goto, request.original_fullpath %>
+<%= f.submit "Submit Comment", class: "btn btn-primary" %>
+<% end %>

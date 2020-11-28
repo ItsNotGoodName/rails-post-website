@@ -19,10 +19,13 @@
 <p class="border p-3">
   <%= @post.body %>
 <p>
+<div>
+  <%= render 'comments/comment_submit', commentable: @post %>
+</div>
 
 <div>
 <% @post.comments.each do |comment| %>
-  <div class="container border-top border-bottom pt-3 pb-3">
+  <div class="container border-top border-bottom pt-3 pb-3" id=<%= comment.id %>>
     <h5 class="row">
       <%= link_to  comment.user.name, user_path(comment.user) %>
     </h5>
