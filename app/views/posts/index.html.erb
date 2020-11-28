@@ -14,7 +14,7 @@
       </div>
     </div>
     <div>
-      <%= render 'post_vote', post: post %>
+      <%= render 'votes/vote_submit', voteable: post, vote_value: post.vote_value %>
     </div>
   </div>
 </div>

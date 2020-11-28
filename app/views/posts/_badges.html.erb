@@ -1,5 +1,4 @@
-<span class="badge badge-primary">Votes <%= post.vote %></span>
-<span class="badge badge-secondary"><%= post.created_at.strftime("%F") %></span>
 <%= link_to user_path(post.user) do %>
-  <span class="badge badge-danger">By: <%= post.user.name %></span>
+  <span class="badge badge-primary">By: <%= post.user.name %></span>
 <% end %>
+<span class="badge badge-secondary"><%= post.created_at.strftime("%F") %></span>

@@ -4,15 +4,12 @@ downvote_class = ""
 %>
 
 <% 
-if @current_user
-   vote = voteable.votes.find_by(user: @current_user.id)
-   if !vote.nil?
-     if vote.value == 1
-      upvote_class += "bg-success"
-     else
-      downvote_class += "bg-danger"
-     end 
-   end
+if !vote_value.nil?
+  if vote_value == 1
+   upvote_class += "bg-success"
+  elsif vote_value == -1
+   downvote_class += "bg-danger"
+  end 
 end
 %>
 
