@@ -6,7 +6,7 @@ class VotesController < ApplicationController
 
   def vote
     value = params[:value].to_i
-    vote_on_target current_user, @voteable, value
+    vote_on_votable current_user, @voteable, value
 
     if params[:goto].nil?
       redirect_back fallback_location: root_path
