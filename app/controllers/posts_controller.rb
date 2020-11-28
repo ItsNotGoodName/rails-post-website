@@ -18,8 +18,7 @@ class PostsController < ApplicationController
       .offset(current_page * POST_PER_PAGE)
       .limit(POST_PER_PAGE + 1)
       .preload(:user)
-      .select("posts.*, votes.value as vote_value")
-      .joins("LEFT JOIN votes ON votes.user_id = #{logged_in? ? @current_user.id : -1} AND votes.voteable_id = posts.id AND votes.voteable_type = 'Post' ")
+      .with_vote_value @current_user
 
     if posts_plus_one.length <= POST_PER_PAGE
       @posts = posts_plus_one
@@ -55,8 +54,7 @@ class PostsController < ApplicationController
       .comments
       .order(vote: :desc, created_at: :desc)
       .preload(:user)
-      .select("comments.*, votes.value as vote_value")
-      .joins("LEFT JOIN votes ON votes.user_id = #{logged_in? ? @current_user.id : -1} AND votes.voteable_id = comments.id AND votes.voteable_type = 'Comment' ")
+      .with_vote_value @current_user
   end
 
   private
