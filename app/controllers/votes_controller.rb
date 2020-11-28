@@ -7,7 +7,7 @@ class VotesController < ApplicationController
 
   def vote
     value = params[:value].to_i
-    vote_on_votable current_user, @voteable, value
+    vote_on_voteable current_user, @voteable, value
 
     goto_or_goback(@voteable.id)
   end

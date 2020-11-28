@@ -3,7 +3,18 @@ upvote_class = "mb-2 "
 downvote_class = ""
 %>
 
-<%= logged_in? && post.votes.find_or_create_by(user_id: current_user.id).value %>
+<% 
+if defined?(@user)
+   post_vote = post.votes.find_by(user: @user.id)
+   if !post_vote.nil?
+     if post_vote.value == 1
+      upvote_class += "bg-success"
+     else
+      downvote_class += "bg-danger"
+     end 
+   end
+end
+%>
 
 <%= button_to post_vote_path(post_id: post.id, value: 1, goto: request.original_fullpath), class: upvote_class do %>
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

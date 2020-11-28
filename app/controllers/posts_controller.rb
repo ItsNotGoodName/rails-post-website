@@ -26,6 +26,8 @@ class PostsController < ApplicationController
       has_next = true
     end
 
+    @user = current_user if logged_in?
+
     @page = {
       prev?: current_page.positive?,
       current: current_page,
