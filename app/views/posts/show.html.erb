@@ -35,7 +35,7 @@
 
 <div>
 <% @comments.each do |comment| %>
-  <div class="container border-top pt-3 pb-3 d-flex" id=<%= comment.id %>>
+  <div class="container border-top pt-3 pb-3 d-flex" id=c<%= comment.id %>>
     <div class="mr-auto">
       <h5 class="row">
         <%= link_to  comment.user.name, user_path(comment.user) %>
