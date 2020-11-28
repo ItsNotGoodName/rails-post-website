@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index new create show] do
     post "/vote", to: "votes#vote"
   end
+  resources :comments do
+    post "/vote", to: "votes#vote"
+  end
   resources :users, only: %i[show]
   get "/register", to: "users#new"
   post "/register", to: "users#create"
