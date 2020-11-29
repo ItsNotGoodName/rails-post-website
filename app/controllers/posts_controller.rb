@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post
       .order(vote: :desc, created_at: :desc)
-      .paginate(page: current_page_params, per_page: 2)
+      .paginate(page: current_page_params)
       .preload(:user)
       .with_vote_value @current_user
   end
