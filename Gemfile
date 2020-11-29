@@ -10,6 +10,7 @@ gem "webpacker", "~> 4.0"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.7"
 gem "bcrypt", "~> 3.1", ">= 3.1.11"
+gem "will_paginate", "~> 3.3"
 
 gem "bootsnap", ">= 1.4.2", require: false
 
@@ -29,8 +30,8 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'guard'
-  gem 'guard-minitest'
+  gem "guard"
+  gem "guard-minitest"
 end
 
 group :production do

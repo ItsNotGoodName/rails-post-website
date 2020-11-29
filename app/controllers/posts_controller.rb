@@ -11,29 +11,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    current_page = current_page_params
-
-    posts_plus_one = Post
+    @posts = Post
       .order(vote: :desc, created_at: :desc)
-      .offset(current_page * POST_PER_PAGE)
-      .limit(POST_PER_PAGE + 1)
+      .paginate(page: current_page_params, per_page: 2)
       .preload(:user)
       .with_vote_value @current_user
-
-    if posts_plus_one.length <= POST_PER_PAGE
-      @posts = posts_plus_one
-      has_next = false
-    else
-      @posts = posts_plus_one.slice(0, POST_PER_PAGE)
-      has_next = true
-    end
-
-    @page = {
-      prev?: current_page.positive?,
-      current: current_page,
-      next?: has_next,
-      last: ((Post.count - 1) / POST_PER_PAGE).to_i
-    }
   end
 
   def create
@@ -51,6 +33,7 @@ class PostsController < ApplicationController
     @comments = @post
       .comments
       .order(vote: :desc, created_at: :desc)
+      .paginate(page: current_page_params)
       .preload(:user)
       .with_vote_value @current_user
   end
@@ -58,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def current_page_params
-    params.fetch(:page, 0).to_i
+    params.fetch(:page, 1).to_i
   end
 
   def post_params
