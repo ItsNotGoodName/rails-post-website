@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include ApplicationHelper
   include SessionHelper
-  before_action :current_user, only: %i[index show]
+  before_action :current_user, only: %i[index show create]
   before_action :require_login, except: %i[index show]
 
   POST_PER_PAGE = 10
