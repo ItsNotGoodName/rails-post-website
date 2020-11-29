@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_vote = @post.votes.find_by(user: @current_user)
+    @vote = @post.votes.find_by(user: @current_user)
     @comments = @post
       .comments
       .order(vote: :desc, created_at: :desc)
