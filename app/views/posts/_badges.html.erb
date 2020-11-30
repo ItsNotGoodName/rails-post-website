@@ -1,6 +1,6 @@
 <h5>
-<span class="badge border ">
-  <%= link_to  post.user.username, user_path(post.user)%>
-</span>
-<span class="badge border"><%= post.created_at.strftime("%F") %></span>
-</h6>
+  <span class="badge border ">
+    <%= link_to  post.user.username, user_path(post.user)%>
+  </span>
+  <span class="badge border"><%= post.created_at.strftime("%F") %></span>
+</h5>

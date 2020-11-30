@@ -1,9 +1,9 @@
 <div class="d-flex mb-2">
-  <div class="flex-column mr-auto pr-1">
+  <div class="flex-column mr-auto">
     <div class="flex-row">
-      <h3 class="text-break">
+      <h4 class="text-break">
         <%= @post.title %>
-      </h3>
+      </h4>
     </div>
     <div class="flex-row">
       <%= render 'badges', post: @post %>
@@ -11,9 +11,7 @@
     <div>
     </div>
   </div>
-  <div>
-    <%= render 'votes/vote_submit', voteable: @post, vote_value: @vote&.value %>
-  </div>
+  <%= render 'votes/vote_submit', voteable: @post, vote_value: @vote&.value %>
 </div>
 <p class="border p-3">
   <%= @post.body %>
