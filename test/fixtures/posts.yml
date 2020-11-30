@@ -1,0 +1,4 @@
+test_post:
+  title: "test post title"
+  body: "test post body"
+  user: test_user
