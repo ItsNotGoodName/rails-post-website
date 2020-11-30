@@ -1,0 +1,4 @@
+test_user:
+  username: "test user"
+  password_digest: <%= BCrypt::Password.create('123456', cost: 5) %>
+
