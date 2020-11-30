@@ -23,12 +23,6 @@
   <%= @post.body %>
 <p>
 
-<% flash.each do |msg| %>
-<div class="alert alert-danger" role="alert">
-  <%= msg[1] %>
-</div>
-<% end %>
-
 <div>
   <%= render 'comments/comment_submit', commentable: @post %>
 </div>
