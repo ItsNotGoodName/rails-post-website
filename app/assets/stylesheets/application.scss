@@ -1,2 +1,10 @@
 $primary: #238478;
 @import "bootstrap/scss/bootstrap";
+
+.form-center {
+	@extend .text-center;
+
+  width: 100%;
+  max-width: 330px;
+  margin: auto;
+}
