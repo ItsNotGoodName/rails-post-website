@@ -9,6 +9,10 @@ class PostTest < ActiveSupport::TestCase
     assert @post.valid?
   end
 
+  test "post's vote should be 0" do
+    assert_equal @post.vote, 0
+  end
+
   test "post should have user" do
     @post.user_id = nil
     assert_not @post.valid?
