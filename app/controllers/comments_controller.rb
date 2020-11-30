@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.valid?
       @comment.save
     else
-      flash[:danger] = "Comment cannot be empty"
+      flash[:danger] = @comment.errors.full_messages[0]
     end
     goto_or_goback @comment.id, :c
   end
