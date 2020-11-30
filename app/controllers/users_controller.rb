@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by id: params[:id]
-    render file: "public/404.html" if @user.nil?
+    @user = User.find(params[:id])
   end
 
   def create
