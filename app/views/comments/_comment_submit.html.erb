@@ -1,5 +1,6 @@
 <%= form_with url: polymorphic_url([commentable, Comment]), class: "mb-3", scope: :comment,local: true do |f| %>
 <div class="form-group">
+  <%= f.label :body, class: "sr-only" %>
   <%= f.text_area :body, class: "form-control", placeholder: :body %>
 </div>
 <%= hidden_field_tag :goto, request.original_fullpath %>
