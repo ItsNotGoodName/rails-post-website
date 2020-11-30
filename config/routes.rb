@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   resources :comments do
     post "/vote", to: "votes#vote"
   end
-  resources :users, only: %i[show]
+  resources :users, only: %i[create show]
   get "/register", to: "users#new"
-  post "/register", to: "users#create"
   get "/login", to: "session#new"
   post "/login", to: "session#create"
   get "/logout", to: "session#destroy"
