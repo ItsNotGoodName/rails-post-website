@@ -2,7 +2,7 @@ require "test_helper"
 
 class PostTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Test", password: "123456", password_confirmation: "123456").save
+    @user = User.new(username: "Test", password: "123456", password_confirmation: "123456").save
     @post = Post.new(title: "My Title", body: "Hello World!", user_id: @user)
   end
 

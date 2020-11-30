@@ -1,4 +1,4 @@
 <%= link_to user_path(post.user) do %>
-  <span class="badge badge-primary">By: <%= post.user.name %></span>
+  <span class="badge badge-primary">By: <%= post.user.username %></span>
 <% end %>
 <span class="badge badge-secondary"><%= post.created_at.strftime("%F") %></span>

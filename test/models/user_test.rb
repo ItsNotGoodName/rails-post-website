@@ -2,28 +2,28 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Test", password: "123456", password_confirmation: "123456")
+    @user = User.new(username: "Test", password: "123456", password_confirmation: "123456")
   end
 
   test "valid user" do
     assert @user.valid?
   end
 
-  test "name should be present" do
-    @user.name = "    "
+  test "username should be present" do
+    @user.username = "    "
     assert_not @user.valid?
   end
 
-  test "name should not be too long" do
-    @user.name = "a" * 51
+  test "username should not be too long" do
+    @user.username = "a" * 51
     assert_not @user.valid?
   end
 
-  test "user should be lower-cased before saving" do
-    name = "HELllLO"
-    @user.name = name
+  test "useruser should be lower-cased before saving" do
+    username = "HELllLO"
+    @user.username = username
     @user.save
-    assert_equal name.downcase, @user.reload.name
+    assert_equal username.downcase, @user.reload.username
   end
 
   test "password should be present (nonblank)" do
