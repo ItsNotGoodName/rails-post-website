@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   include ApplicationHelper
-  include SessionHelper
+  include SessionsHelper
   include VotesHelper
   before_action :require_login
   before_action :find_voteable
