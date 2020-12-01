@@ -8,7 +8,7 @@
       <p class="row px-3"><%= comment.body %></p>
     </div>
     <div> 
-      <%= render 'votes/vote_submit', voteable: comment, vote_value: comment.vote_value %>
+      <%= render 'votes/submit', voteable: comment, vote_value: comment.vote_value %>
     </div>
   </div>
 <% end %>

@@ -11,14 +11,12 @@
     <div>
     </div>
   </div>
-  <%= render 'votes/vote_submit', voteable: @post, vote_value: @vote&.value %>
+  <%= render 'votes/submit', voteable: @post, vote_value: @vote&.value %>
 </div>
 <p class="border p-3">
   <%= @post.body %>
 <p>
 
-<div>
-  <%= render 'comments/comment_submit', commentable: @post %>
-</div>
+<%= render 'comments/submit', commentable: @post %>
 
 <%= render 'comments/paginate', comments: @comments %>
