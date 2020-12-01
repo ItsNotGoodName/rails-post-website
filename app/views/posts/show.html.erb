@@ -21,19 +21,4 @@
   <%= render 'comments/comment_submit', commentable: @post %>
 </div>
 
-<div>
-<% @comments.each do |comment| %>
-  <div class="container border-top pt-3 pb-3 d-flex" id=c<%= comment.id %>>
-    <div class="mr-auto">
-      <h5 class="row">
-        <%= link_to  comment.user.username, user_path(comment.user) %>
-      </h5>
-      <p class="row px-3"><%= comment.body %></p>
-    </div>
-    <div> 
-      <%= render 'votes/vote_submit', voteable: comment, vote_value: comment.vote_value %>
-    </div>
-  </div>
-<% end %>
-<%= will_paginate @comments %>
-</div>
+<%= render 'comments/paginate', comments: @comments %>
