@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   include ApplicationHelper
-  include SessionHelper
+  include SessionsHelper
   before_action :current_user, only: %i[index show create]
   before_action :require_login, except: %i[index show]
 

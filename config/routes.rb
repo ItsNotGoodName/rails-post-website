@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :comments do
     post "/vote", to: "votes#vote"
   end
+  resources :sessions, only: %i[create]
   resources :users, only: %i[create show]
   get "/register", to: "users#new"
-  get "/login", to: "session#new"
-  post "/login", to: "session#create"
-  get "/logout", to: "session#destroy"
-  delete "/logout", to: "session#destroy"
+  get "/login", to: "sessions#new"
+  # Used for no javascript clients
+  get "/logout", to: "sessions#destroy"
+  delete "/logout", to: "sessions#destroy"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -8,7 +8,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create user and login" do
-    post register_path, params: {user: {username: "test", password: "123456", password_confirmation: "123456"}}
+    post users_path, params: {user: {username: "test", password: "123456", password_confirmation: "123456"}}
     assert_not flash.empty?
     assert session[:user_id]
     assert_redirected_to root_path

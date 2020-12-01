@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   include ApplicationHelper
-  include SessionHelper
+  include SessionsHelper
   before_action :require_login
   before_action :find_commentable
 
