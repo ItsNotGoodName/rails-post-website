@@ -3,7 +3,11 @@
   <%= form_with url: polymorphic_url([commentable, Comment]), class: "mb-3", scope: :comment,local: true do |f| %>
   <div class="form-group">
     <%= f.label :body, class: "sr-only" %>
-    <%= f.text_area :body, class: "form-control", placeholder: :body %>
+    <% if logged_in? %>
+      <%= f.text_area :body, class: "form-control", placeholder: :body %>
+    <% else %>
+      <%= f.text_area :body, class: "form-control", placeholder: "Please login to comment", disabled: "true" %>
+    <% end %>
   </div>
   <%= hidden_field_tag :goto, request.original_fullpath %>
   <div class="d-flex flex-row-reverse">

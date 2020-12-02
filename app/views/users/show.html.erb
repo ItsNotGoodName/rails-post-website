@@ -1,8 +1,10 @@
 <% provide(:title, 'User Profile') %>
 
 <div class="jumbotron">
-  <h1 class="display-4"><%= @user.username %></h1>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Edit</a>
+  <h1 class="display-2"><%= @user.username %></h1>
+  <% if current_user&.id == @user.id %>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Edit</a>
+  <% end %>
 </div>
 
 <%= render 'comments/submit', commentable: @user %>
