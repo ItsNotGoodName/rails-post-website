@@ -1,4 +1,5 @@
 <div>
+<h4>Comments</h4>
 <% comments.each do |comment| %>
   <div class="container border-top pt-3 pb-3 d-flex" id=c<%= comment.id %>>
     <div class="mr-auto">
@@ -11,6 +12,9 @@
       <%= render 'votes/submit', voteable: comment, vote_value: comment.vote_value %>
     </div>
   </div>
+<% end %>
+<% if comments.empty? %>
+  <p>No comments are available...</p>
 <% end %>
 <%= will_paginate comments %>
 </div>

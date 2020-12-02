@@ -1,4 +1,4 @@
-<% provide(:title, 'New Post') %>
+<% provide(:title, 'Submit Post') %>
 
 <% if @post.errors.any? %>
 <% @post.errors.full_messages.each do |msg| %>
@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="form-center">
-  <h2>Post Submission</h2>
+  <h2>Submit Post</h2>
   <%= form_with model: @post, local: true do |f| %>
   <div class="form-group">
     <%= f.label :title, class: "sr-only" %>

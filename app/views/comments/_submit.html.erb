@@ -1,8 +1,13 @@
-<%= form_with url: polymorphic_url([commentable, Comment]), class: "mb-3", scope: :comment,local: true do |f| %>
-<div class="form-group">
-  <%= f.label :body, class: "sr-only" %>
-  <%= f.text_area :body, class: "form-control", placeholder: :body %>
+<div>
+  <h4>Submit Comment</h4>
+  <%= form_with url: polymorphic_url([commentable, Comment]), class: "mb-3", scope: :comment,local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :body, class: "sr-only" %>
+    <%= f.text_area :body, class: "form-control", placeholder: :body %>
+  </div>
+  <%= hidden_field_tag :goto, request.original_fullpath %>
+  <div class="d-flex flex-row-reverse">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+  <% end %>
 </div>
-<%= hidden_field_tag :goto, request.original_fullpath %>
-<%= f.submit "Submit Comment", class: "btn btn-primary" %>
-<% end %>
