@@ -16,4 +16,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def page_param
+    params.fetch(:page, 1).to_i
+  end
 end

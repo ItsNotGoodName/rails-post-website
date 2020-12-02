@@ -2,3 +2,7 @@
   <h1 class="display-4"><%= @user.username %></h1>
   <a class="btn btn-primary btn-lg" href="#" role="button">Edit</a>
 </div>
+
+<%= render 'comments/submit', commentable: @user %>
+
+<%= render 'comments/paginate', comments: @comments %>

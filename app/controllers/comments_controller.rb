@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def find_commentable
-    model = [Post].detect { |c| params["#{c.name.underscore}_id"] }
+    model = [Post, User].detect { |c| params["#{c.name.underscore}_id"] }
     @commentable = model.find(params["#{model.name.underscore}_id"])
   end
 end

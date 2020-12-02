@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   include ApplicationHelper
+  include CommentsHelper
   include SessionsHelper
   before_action :current_user, only: %i[index show create]
   before_action :require_login, except: %i[index show]
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post
       .order(vote: :desc, created_at: :desc)
-      .paginate(page: current_page_params)
+      .paginate(page: page_param)
       .preload(:user)
       .with_vote_value @current_user
   end
@@ -32,19 +33,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @vote = @post.votes.find_by(user: @current_user)
-    @comments = @post
-      .comments
-      .order(vote: :desc, created_at: :desc)
-      .paginate(page: current_page_params)
-      .preload(:user)
-      .with_vote_value @current_user
+    @comments = get_comments @post
   end
 
   private
-
-  def current_page_params
-    params.fetch(:page, 1).to_i
-  end
 
   def post_params
     params.require(:post).permit(
