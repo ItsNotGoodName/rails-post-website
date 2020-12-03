@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       .order(vote: :desc, created_at: :desc)
       .paginate(page: page_param)
       .preload(:user)
-      .with_vote_value @current_user
+      .with_vote(@current_user)
   end
 
   def create
@@ -31,8 +31,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @vote = @post.votes.find_by(user: @current_user)
+    @post = Post.limit(1)
+      .where(params[:id])
+      .with_vote(@current_user)
+      .first
     @comments = get_comments @post
   end
 

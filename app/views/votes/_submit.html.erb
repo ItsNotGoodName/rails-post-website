@@ -6,11 +6,11 @@ downvote_color = "currentColor"
 %>
 
 <% 
-if !vote_value.nil?
-  if vote_value == 1
+if !voteable.vote_id.nil?
+  if voteable.vote_value == 1
     upvote_class += "bg-success"
     upvote_color = "white"
-  elsif vote_value == -1
+  elsif voteable.vote_value == -1
     downvote_class += "bg-danger"
     downvote_color = "white"
   end 

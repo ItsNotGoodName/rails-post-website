@@ -5,6 +5,6 @@ module CommentsHelper
       .order(vote: :desc, created_at: :desc)
       .paginate(page: page_param)
       .preload(:user)
-      .with_vote_value @current_user
+      .with_vote(@current_user)
   end
 end
