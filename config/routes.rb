@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   root "posts#index"
   resources :posts, concerns: [:commentable, :voteable]
-  resources :comments, only: %i[create], concerns: :voteable
+  resources :comments, concerns: :voteable
   resources :users, concerns: :commentable
   resources :sessions
   get "/register", to: "users#new"
