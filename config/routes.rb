@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
+  concern :voteable do
+    post "/vote", to: "votes#vote"
+  end
+  concern :commentable do
+    resources :comments, only: %i[create]
+  end
   root "posts#index"
-  resources :posts, only: %i[index new create show] do
-    resources :comments, only: %i[create]
-    post "/vote", to: "votes#vote"
-  end
-  resources :comments do
-    post "/vote", to: "votes#vote"
-  end
-  resources :users, only: %i[create show] do
-    resources :comments, only: %i[create]
-  end
-  resources :sessions, only: %i[create]
+  resources :posts, concerns: [:commentable, :voteable]
+  resources :comments, concerns: :voteable
+  resources :users, concerns: :commentable
+  resources :sessions
   get "/register", to: "users#new"
   get "/login", to: "sessions#new"
   # Used for no javascript clients
