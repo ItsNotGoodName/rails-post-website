@@ -22,7 +22,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-
       flash[:success] = "Post submitted"
       redirect_to root_path
     else
@@ -31,11 +30,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.limit(1)
+    @post = Post
       .where(params[:id])
       .with_vote(@current_user)
       .first
-    @comments = get_comments @post
+    @comments = comments_for(@post, @current_user)
   end
 
   private
