@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @comments = get_comments @user
+    @comments = comments_for @user, @current_user
   end
 
   def create
