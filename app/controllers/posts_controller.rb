@@ -33,6 +33,7 @@ class PostsController < ApplicationController
     @post = Post
       .where(params[:id])
       .with_vote(@current_user)
+      .limit(1)
       .first
     @comments = comments_for(@post, @current_user)
   end
