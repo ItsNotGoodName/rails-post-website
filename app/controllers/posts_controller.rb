@@ -31,9 +31,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post
-      .where(params[:id])
+      .where(id: params[:id])
       .with_vote(@current_user)
-      .limit(1)
       .first
     @comments = comments_for(@post, @current_user)
   end
