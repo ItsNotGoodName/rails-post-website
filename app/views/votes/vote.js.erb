@@ -1,0 +1,2 @@
+$("#<%= voteable_anchor(@voteable) %>")
+  .replaceWith("<%= j render "votes/submit", voteable: @voteable, vote_value: @vote&.value %>");

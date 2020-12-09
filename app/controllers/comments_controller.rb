@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = @comment.errors.full_messages[0]
     end
-    goto_or_goback @comment.id, :c
+    redirect_back fallback_location: root_path
   end
 
   private

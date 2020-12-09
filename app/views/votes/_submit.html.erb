@@ -3,32 +3,32 @@ upvote_class = "rounded border-0 "
 downvote_class = "rounded border-0 "
 upvote_color = "currentColor"
 downvote_color = "currentColor"
-%>
 
-<% 
-if !voteable.vote_id.nil?
-  if voteable.vote_value == 1
+if defined?(vote_value)
+  if vote_value == 1
     upvote_class += "bg-success"
     upvote_color = "white"
-  elsif voteable.vote_value == -1
+  elsif vote_value == -1
     downvote_class += "bg-danger"
     downvote_color = "white"
   end 
 end
 %>
 
-<div class="ml-2 d-flex flex-column">
-  <%= button_to polymorphic_url([voteable, :vote], value: 1, goto: request.original_fullpath), "aria-label": "upvote", class: upvote_class, remote: true, form: { class: "ml-auto" }  do %>
-  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill=<%= upvote_color %> xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-</svg>
-<% end %>
-<div class="text-center">
-  <%= voteable.vote %>
-</div>
-<%= button_to polymorphic_url([voteable, :vote], value: -1, goto: request.original_fullpath), "aria-label": "downvote", class: downvote_class, remote: true, form: { class: "ml-auto" } do %>
-  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill=<%= downvote_color %> xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
-</svg>
-<% end %>
+<div id=<%= voteable_anchor(voteable) %>>
+  <div class="ml-2 d-flex flex-column">
+    <%= button_to polymorphic_url([voteable, :vote], value: 1, goto: request.original_fullpath), "aria-label": "upvote", class: upvote_class, remote: true, form: { class: "ml-auto" }  do %>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill=<%= upvote_color %> xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+  </svg>
+  <% end %>
+  <div class="text-center">
+    <%= voteable.vote %>
+  </div>
+  <%= button_to polymorphic_url([voteable, :vote], value: -1, goto: request.original_fullpath), "aria-label": "downvote", class: downvote_class, remote: true, form: { class: "ml-auto" } do %>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill=<%= downvote_color %> xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+  </svg>
+  <% end %>
+  </div>
 </div>

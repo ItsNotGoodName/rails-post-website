@@ -15,11 +15,17 @@ module VotesHelper
       # Delete vote
       target_vote.destroy
       voteable.increment!(:vote, -new_value)
+      return nil
     else
       # Change vote
       target_vote.value = new_value
       target_vote.save
       voteable.increment!(:vote, 2 * new_value)
     end
+    return target_vote
+  end
+
+  def voteable_anchor(voteable)
+    "#{voteable.class.name.downcase}#{voteable.id}-vote"
   end
 end

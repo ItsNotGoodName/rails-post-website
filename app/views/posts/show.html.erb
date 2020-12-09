@@ -11,7 +11,7 @@
     <div>
     </div>
   </div>
-  <%= render 'votes/submit', voteable: @post, vote_value: @vote&.value %>
+  <%= render 'votes/submit', voteable: @post, vote_value: @post.vote_value %>
 </div>
 <p class="border p-3">
   <%= @post.body %>
