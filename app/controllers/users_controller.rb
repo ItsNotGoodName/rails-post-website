@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   include ApplicationHelper
   include CommentsHelper
   include SessionsHelper
+  include UsersHelper
   before_action :current_user, only: %i[show]
 
   def new
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @comments = comments_for @user, @current_user
+    @total_votes = get_total_votes @user
   end
 
   def create
